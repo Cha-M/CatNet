@@ -23,10 +23,11 @@ function App() {
 
   const collectCat = async () => {
     try {
-      const catAPILink = "https://api.thecatapi.com/v1/images/search";
+      const catAPILink = "https://api.thecatapi.com/v1/images/search/";
       const catResponse = await fetch(catAPILink);
       const data = await catResponse.json();
       setCatImageData(data[0]);
+
       if (catImageData)
       {
         console.log("catImageData set as ", catImageData);
@@ -59,7 +60,13 @@ function App() {
       <h1>
         CatNet
       </h1>
-      <img src = {catImageStr}></img>
+      {
+        catImageStr ?
+          <img src = {catImageStr}></img> :
+          <p>No cat image string yet</p>
+
+      }
+      <button onClick={collectCat}>Cat Button</button>
     </div>
   );
 }
