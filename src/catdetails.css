@@ -20,3 +20,9 @@
     flex-direction: column;
     overflow: "auto",
 }
+
+.modal-content img {
+    display: block;
+    min-width: 50px;
+    min-height: 50px;
+}
