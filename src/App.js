@@ -56,7 +56,6 @@ function App() {
   }
 
   const pushCat = async () => {
-    for (let x of ["a","b","c","d"]) { 
       try {
         const catAPILink = "https://api.thecatapi.com/v1/images/search/";
         const catResponse = await fetch(catAPILink);
@@ -80,9 +79,10 @@ function App() {
         } 
         
         const str1 = await catImageData.url;
+        const str2 = "abcd";
         setCatImageStr(str1);
         let catStorageLocal = catStorage;
-        catStorageLocal.push({catImgURL : str1, catName : `Felix ${x}`});
+        catStorageLocal.push({catImgURL : str1, catName : `Felix ${str2}`});
 
         setCatStorage(catStorageLocal);
         console.log("catStorage", catStorage);
@@ -90,7 +90,7 @@ function App() {
       } catch (error) {
         console.log ("Error: ", error);
       }
-    }
+    
   }
 
   // const arrayList = (props) => {
@@ -168,9 +168,6 @@ function App() {
       <h1>
         CatNet
       </h1>
-      <button onClick={pushCat}>
-        Push Cat
-      </button>
       {
         catImageStr ?
           <img src = {catImageStr}></img> :
@@ -181,6 +178,9 @@ function App() {
 
       <div>
         <button onClick={collectCat}>Cat Button</button>
+        <button onClick={pushCat}>
+          Push Cat
+        </button>
       </div>
 
       <div className="body-container">
