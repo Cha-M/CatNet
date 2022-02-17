@@ -9,13 +9,9 @@ import Basket from './components/Basket'
 
 function App() {
 
-  // This is an array that will be populated by cats clicked on!
-  // It will be passed into the Basket component, each item in the
-  // array will then be rendered to the basket container!
   const [basketItems, setBasketItems] = useState([]);
-
   const [catImageStr, setCatImageStr] = useState("");
-  const [catStorage, setCatStorage] = useState([{"catImgURL" : "", "catName" : ""}])
+  const [catStorage, setCatStorage] = useState([{"catImgURL" : "", "catName" : ""}]);
   const [catImageData, setCatImageData] = useState("");
 
   // const data = await response.json();
@@ -54,7 +50,6 @@ function App() {
   }
   
   const pushCat = async () => {
-    for (let x of ["a","b","c","d"]) { 
       try {
         const catAPILink = "https://api.thecatapi.com/v1/images/search/";
         const catResponse = await fetch(catAPILink);
@@ -78,9 +73,10 @@ function App() {
         } 
         
         const str1 = await catImageData.url;
-        setCatImageStr(str1);
+        const str2 = `${faker.name.firstName()}`;
+        // setCatImageStr(str1);
         let catStorageLocal = catStorage;
-        catStorageLocal.push({catImgURL : str1, catName : `Felix ${x}`});
+        catStorageLocal.push({catImgURL : str1, catName : `${str2}`});
 
         setCatStorage(catStorageLocal);
         console.log("catStorage", catStorage);
@@ -88,9 +84,22 @@ function App() {
       } catch (error) {
         console.log ("Error: ", error);
       }
-    }
+    
   }
 
+  // const arrayList = (props) => {
+  //   const items = props;
+  //   // const listItemsInner;
+  //   const listItems = items.map((item, index) =>
+  //     <li key={index.toString()}>{item}</li>
+  //     // <ul>{() => item.map((it1, in1)) => <li>it1</li>}</ul></li>
+  
+  //   )
+  
+  //   return (
+  //     <ul>{listItems}</ul>
+  //   )
+  // }
 
   const CatCloner = (props) => {
     // let arrayCats = Array(40);
@@ -103,9 +112,9 @@ function App() {
     // let arrayCats = [{"catImgURL" : "abcd", "catName" : "efgh"}, {"catImgURL" : "abcd", "catName" : "efgh"}];
     let arrayCats = catStorage;
       if (arrayCats) {
-        const mapCats = arrayCats.map( (item, index) => <div className='flex4'>Name: {item.catName}, <img src = {item.catImgURL}></img>(flex4)</div>);
+        const mapCats = arrayCats.map( (item, index) => <div className='flex4'>Name: {item.catName} <img src = {item.catImgURL}></img>(flex4)</div>);
         console.log("arrayCats", arrayCats, "mapCats", mapCats);
-        return ( <> <div className='flex3'>{mapCats}</div> </> )
+        return ( <> <div className='flex3'>Container for cats from CatCloner function (flex3): {mapCats}</div> </> )
       }
     };
 
