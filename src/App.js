@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 
 function App() {
 
+  // State hooks
   const [cat, setCat] = useState([]);
   const [basket, setBasket] = useState([]);
   const [error, setError] = useState({
@@ -9,6 +10,7 @@ function App() {
     message: ''
   });
 
+  // This function will fetch a catch object
   const collectCats = async () => {
     try {
       const response = await fetch('https://api.thecatapi.com/v1/images/search');
@@ -25,6 +27,7 @@ function App() {
     }
   }
 
+  // Fetch one cat object on load
   useEffect(()=>{
     collectCats();
   }, [])
