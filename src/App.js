@@ -7,17 +7,29 @@ import Footer from './components/footer';
 // import Header from './Components/Header';
 // import Basket from './components/Basket';
 
+import { Modal } from './catdetails';
+
+ // ================\/============\/==================================
+
+  const randName = faker.name.firstName();
+  const randPrice = faker.commerce.price();
+  const randLoc = faker.address.cityName();
+  const randBreed = faker.animal.cat();
+  const randAbout = faker.lorem.paragraph();
+  //=====================^^^^^^^^^=============================
 
 function App() {
 
   const [basketItems, setBasketItems] = useState([]);
   const [catImageStr, setCatImageStr] = useState("");
   const [catStorage, setCatStorage] = useState([{"catImgURL" : "", "catName" : ""}]);
-  const [catImageData, setCatImageData] = useState("");
+  const [catImageData, setCatImageData] = useState(null);
 
-  // const data = await response.json();
-  // // console.log(data);
-  // setBook(data);
+  //===================\/========\/====================
+  const [cats, setCats] = useState([])
+
+  const [selectedCat, setSelectedCat] = useState(null);
+//=======================^^^^^^^^====================
 
   const collectCat = async () => {
     try {
@@ -157,10 +169,17 @@ function App() {
   useEffect(() => {
     collectCat()
   }, []);
-
+//========================\/=========\/==================
+      //faker const's required after div. Modal fakers in func & catdetail modal
   return (
     <div>
-
+      <p>Name: {randName}</p>
+      <p>Cost £{randPrice}</p>
+      {
+        selectedCat ? <Modal price={randPrice} location={randLoc} breed={randBreed} about={randAbout} url={catImageData.url
+      }
+      onCloseClick={ () => setSelectedCat(null) } /> : null
+      }
       <h1>
         CatNet
       </h1>
@@ -169,7 +188,6 @@ function App() {
         catImageStr ?
           <img src = {catImageStr}></img> :
           <p>No cat image string yet</p>
-
       }
 
 
@@ -207,6 +225,8 @@ function App() {
       {/* <Basket/> */}
       
       <Footer/>
+      <button onClick={collectCat}>Cat Button</button>
+      <button onClick={() => setSelectedCat(catImageData)}>Detail</button>
     </div>
   );
 }
