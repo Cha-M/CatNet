@@ -1,25 +1,28 @@
 import { useState, useEffect } from 'react';
 import logo from './logo.svg';
 
+import { Modal } from './catdetails';
 
-// const collect = async () => {
-//   try {
-//     // const response = await fetch("https://api.adviceslip.com/advice");
-//     const randID = Math.floor(Math.random() * 60000);
-//     console.log("n", randID);
-//     const apiStr = "http://gutendex.com/books/" + randID + "?limit=10";
-//     // const response = await fetch("http://gutendex.com/books/84");
-//     const response = await fetch(apiStr);
+ // ================\/============\/==================================
+  const { faker } = require('@faker-js/faker');
 
+  const randName = faker.name.firstName();
+  const randPrice = faker.commerce.price();
+  const randLoc = faker.address.cityName();
+  const randBreed = faker.animal.cat();
+  const randAbout = faker.lorem.paragraph();
+  //=====================^^^^^^^^^=============================
 
 function App() {
 
   const [catImageStr, setCatImageStr] = useState("");
-  const [catImageData, setCatImageData] = useState("");
+  const [catImageData, setCatImageData] = useState(null);
 
-  // const data = await response.json();
-  // // console.log(data);
-  // setBook(data);
+  //===================\/========\/====================
+  const [cats, setCats] = useState([])
+
+  const [selectedCat, setSelectedCat] = useState(null);
+//=======================^^^^^^^^====================
 
   const collectCat = async () => {
     try {
@@ -54,9 +57,17 @@ function App() {
   useEffect(() => {
     collectCat()
   }, []);
-
+//========================\/=========\/==================
+      //faker const's required after div. Modal fakers in func & catdetail modal
   return (
     <div>
+      <p>Name: {randName}</p>
+      <p>Cost £{randPrice}</p>
+      {
+        selectedCat ? <Modal price={randPrice} location={randLoc} breed={randBreed} about={randAbout} url={catImageData.url
+      }
+      onCloseClick={ () => setSelectedCat(null) } /> : null
+      }
       <h1>
         CatNet
       </h1>
@@ -64,9 +75,9 @@ function App() {
         catImageStr ?
           <img src = {catImageStr}></img> :
           <p>No cat image string yet</p>
-
       }
       <button onClick={collectCat}>Cat Button</button>
+      <button onClick={() => setSelectedCat(catImageData)}>Detail</button>
     </div>
   );
 }
