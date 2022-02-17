@@ -11,3 +11,40 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.body-container {
+  border: red solid 3px;
+  display: flex;
+  flex-direction: column;
+}
+
+.navbar-container {
+  border: green solid 3px;
+  display: flex;
+  
+}
+
+.checkout-button-container {
+  justify-self: flex-end;
+}
+
+.cats-container {
+  border: blue solid 3px;
+  display: flex;
+  flex-direction: column;
+}
+
+.row1 {
+  display: flex;
+}
+.row2 {
+  display: flex;
+}
+.row3 {
+  display: flex;
+}
+
+.footer-container {
+  border: pink solid 3px;
+  
+}

@@ -1,74 +1,105 @@
 import { useState, useEffect } from 'react';
-import logo from './logo.svg';
-
-
-// const collect = async () => {
-//   try {
-//     // const response = await fetch("https://api.adviceslip.com/advice");
-//     const randID = Math.floor(Math.random() * 60000);
-//     console.log("n", randID);
-//     const apiStr = "http://gutendex.com/books/" + randID + "?limit=10";
-//     // const response = await fetch("http://gutendex.com/books/84");
-//     const response = await fetch(apiStr);
-
 
 function App() {
 
-  const [catImageStr, setCatImageStr] = useState("");
-  const [catImageData, setCatImageData] = useState("");
+  const [cat, setCat] = useState([]);
+  const [basket, setBasket] = useState([]);
+  const [error, setError] = useState({
+    error: false,
+    message: ''
+  });
 
-  // const data = await response.json();
-  // // console.log(data);
-  // setBook(data);
-
-  const collectCat = async () => {
+  const collectCats = async () => {
     try {
-      const catAPILink = "https://api.thecatapi.com/v1/images/search/";
-      const catResponse = await fetch(catAPILink);
-      const data = await catResponse.json();
-      setCatImageData(data[0]);
+      const response = await fetch('https://api.thecatapi.com/v1/images/search');
+      const responseData = await response.json();
+      setCat(responseData[0]);
+      
 
-      if (catImageData)
-      {
-        console.log("catImageData set as ", catImageData);
+      if (response.status !== 200) {
+        throw new Error("oops");
       }
-      else
-      {
-        console.log("!catImageData");
-      }
-      // console.log("catIData", catImageData);
-
-      if (catResponse.status !== 200) {
-        console.log("error !200");
-        console.log(catResponse.status);
-        throw new Error("Error");
-      } 
-
-      const str1 = catImageData.url;
-      setCatImageStr(str1);
     } catch (error) {
-      console.log ("Error: ", error);
+      setError ({ error: true, message: error.message });
+      console.log(error)
     }
   }
 
-  useEffect(() => {
-    collectCat()
-  }, []);
+  useEffect(()=>{
+    collectCats();
+  }, [])
+
+  if (cat.length == 0) {
+    console.log("waiting for cats...")
+  }
+
+  console.log(cat)
 
   return (
-    <div>
-      <h1>
-        CatNet
-      </h1>
-      {
-        catImageStr ?
-          <img src = {catImageStr}></img> :
-          <p>No cat image string yet</p>
-
-      }
-      <button onClick={collectCat}>Cat Button</button>
+    <div className="body-container">
+      <div className="navbar-container">
+        <NavBar />
+      </div>
+      <div className="cats-container">
+        <GetCats />
+      </div>
+      <div className="footer-container">
+        <Footer />
+      </div>
     </div>
+        
   );
+}
+
+const NavBar = () => {
+  return (
+    <>
+      <p>CatNet</p>
+      <div className="checkout-button-container">
+        <button>Checkout</button>
+      </div>
+    </>
+  )
+}
+
+const GetCats = () => {
+  return (
+    <>
+    <div className="row1">
+      <div>cat1</div>
+      <div>cat2</div>
+      <div>cat3</div>
+    </div>
+    <div className="row2">
+      <div>cat1</div>
+      <div>cat2</div>
+      <div>cat3</div>
+    </div>
+    <div className="row3">
+      <div>cat1</div>
+      <div>cat2</div>
+      <div>cat3</div>
+    </div>
+    </>
+  )
+}
+
+const Footer = () => {
+  return (
+    <>
+    <div className="footer-container">
+      <div className="footer-links">
+        <ul>
+          <li>link1</li>
+          <li>link2</li>
+          <li>link3</li>
+          <li>link4</li>
+          <li>link5</li>
+        </ul>
+      </div>
+    </div>
+    </>
+  )
 }
 
 export default App;
