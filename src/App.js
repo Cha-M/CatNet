@@ -91,19 +91,6 @@ function App() {
     }
   }
 
-  // const arrayList = (props) => {
-  //   const items = props;
-  //   // const listItemsInner;
-  //   const listItems = items.map((item, index) =>
-  //     <li key={index.toString()}>{item}</li>
-  //     // <ul>{() => item.map((it1, in1)) => <li>it1</li>}</ul></li>
-  
-  //   )
-  
-  //   return (
-  //     <ul>{listItems}</ul>
-  //   )
-  // }
 
   const CatCloner = (props) => {
     // let arrayCats = Array(40);
@@ -142,21 +129,6 @@ function App() {
 
   return (
     <div>
-      
-      
-
-      {/* {
-        catImageStr ?
-          <img src = {catImageStr}></img> :
-          <p>No cat image string yet</p>
-
-      } */}
-
-
-      {/* <div>
-        <button onClick={collectCat}>Cat Button</button>
-      </div> */}
-
       <div className="body-container">
         <div className="navbar-container">
           <Header />
@@ -173,22 +145,6 @@ function App() {
           <Footer />
         </div>
       </div>
-
-      {/* <div className='flex0'>
-        Outer Flex Object (flex0)
-        <div className='flex1'>
-          Flex title bar (flex1)
-        </div>
-        <div className='flex2'>
-          Rows of cats (flex2) ---
-          <CatCloner array = {pushCat} />
-        </div>
-
-        
-      </div> */}
-      
-      
-      
     </div>
   );
 }
