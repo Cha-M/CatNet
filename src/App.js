@@ -117,16 +117,16 @@ function App() {
     };
 
   // Placeholder components
-  const NavBar = () => {
-    return (
-      <>
-        <p>CatNet</p>
-        <div className="checkout-button-container">
-          <button>Checkout</button>
-        </div>
-      </>
-    )
-  }
+  // const NavBar = () => {
+  //   return (
+  //     <>
+  //       <p>CatNet</p>
+  //       <div className="checkout-button-container">
+  //         <button>Checkout</button>
+  //       </div>
+  //     </>
+  //   )
+  // }
 
   const GetCats = () => {
     return (
@@ -179,7 +179,7 @@ function App() {
 
       <div className="body-container">
         <div className="navbar-container">
-          <NavBar />
+          <Header/>
         </div>
         <div className="cats-container">
           <GetCats />
@@ -202,7 +202,7 @@ function App() {
         
       </div>
       
-      <Footer/>
+      {/* <Footer/> */}
     </div>
   );
 }
