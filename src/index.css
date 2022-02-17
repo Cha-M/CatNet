@@ -87,11 +87,12 @@ img {
   height: 20%;
   width: 100%;
   border: yellow 2pt solid;
+}
 
 }
 
 .body-container {
-  border: red solid 3px;
+  
   display: flex;
   flex-direction: column;
 }
@@ -107,7 +108,7 @@ img {
 }
 
 .cats-container {
-  border: blue solid 3px;
+  /* border: blue solid 3px; */
   display: flex;
   flex-direction: column;
 }
