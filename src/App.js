@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import logo from './logo.svg';
-
+import Header from './Components/Header'
 
 // const collect = async () => {
 //   try {
@@ -57,9 +57,7 @@ function App() {
 
   return (
     <div>
-      <h1>
-        CatNet
-      </h1>
+      <Header />
       {
         catImageStr ?
           <img src = {catImageStr}></img> :
