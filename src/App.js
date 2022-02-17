@@ -4,10 +4,12 @@ import Header from './components/Header'
 import './index.css';
 import { render } from '@testing-library/react';
 import Footer from './components/footer'
+import Basket from './components/Basket'
 
 
 function App() {
 
+  const [basketItems, setBasketItems] = useState([]);
   const [catImageStr, setCatImageStr] = useState("");
   const [catStorage, setCatStorage] = useState([{"catImgURL" : "", "catName" : ""}])
   const [catImageData, setCatImageData] = useState("");
@@ -46,7 +48,7 @@ function App() {
       console.log ("Error: ", error);
     }
   }
-
+  
   const pushCat = async () => {
     for (let x of ["a","b","c","d"]) { 
       try {
@@ -201,6 +203,7 @@ function App() {
 
         
       </div>
+      <Basket/>
       
       <Footer/>
     </div>
