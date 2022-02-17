@@ -57,7 +57,6 @@ function App() {
 
   return (
     <div>
-      <Header />
       {
         catImageStr ?
           <img src = {catImageStr}></img> :
