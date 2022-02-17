@@ -1,5 +1,6 @@
 body {
   margin: 0;
+  margin-bottom: 110px;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -10,4 +11,109 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+
+.flex0 {
+  background-color: black;
+  color: red;
+  border: red 2pt solid;
+  flex-direction: column;
+  display: flex;
+}
+
+.flex1 {
+  background-color: black;
+  color: orange;
+  border: orange 2pt solid;
+  display: flex;
+}
+
+.flex2 {
+  background-color: black;
+  color: yellow;
+  border: yellow 2pt solid;
+  display: flex;
+}
+
+.flex3 {
+  background-color: black;
+  color: green;
+  border: green 2pt solid;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  /* justify-content: space-between; */
+  justify-items: flex-start;
+}
+
+.flex4 {
+  background-color: black;
+  color: blue;
+  border: blue 2pt solid;
+  flex: 1;
+
+  min-width: 10vw;
+  min-height: 10vw;
+  max-width: 10vw;
+  max-height: 10vw;
+  margin: 1vw;
+  flex-grow: 0;
+  
+  
+}
+
+img {
+  flex: 1;
+  min-width: 100%;
+  min-height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.footer {
+  padding: 1rem;
+  background-color: rgb(235, 195, 64);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+
+.body-container {
+  border: red solid 3px;
+  display: flex;
+  flex-direction: column;
+}
+
+.navbar-container {
+  border: green solid 3px;
+  display: flex;
+  
+}
+
+.checkout-button-container {
+  justify-self: flex-end;
+}
+
+.cats-container {
+  border: blue solid 3px;
+  display: flex;
+  flex-direction: column;
+}
+
+.row1 {
+  display: flex;
+}
+.row2 {
+  display: flex;
+}
+.row3 {
+  display: flex;
+}
+
+.footer-container {
+  border: pink solid 3px;
+  
 }
