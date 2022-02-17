@@ -1,17 +1,9 @@
 import { useState, useEffect } from 'react';
+import logo from './logo.svg';
+import Header from './Components/Header'
 import './index.css';
 import { render } from '@testing-library/react';
 import Footer from './components/footer'
-
-
-// const collect = async () => {
-//   try {
-//     // const response = await fetch("https://api.adviceslip.com/advice");
-//     const randID = Math.floor(Math.random() * 60000);
-//     console.log("n", randID);
-//     const apiStr = "http://gutendex.com/books/" + randID + "?limit=10";
-//     // const response = await fetch("http://gutendex.com/books/84");
-//     const response = await fetch(apiStr);
 
 
 function App() {
@@ -165,12 +157,14 @@ function App() {
 
   return (
     <div>
+
       <h1>
         CatNet
       </h1>
       <button onClick={pushCat}>
         Push Cat
       </button>
+
       {
         catImageStr ?
           <img src = {catImageStr}></img> :
