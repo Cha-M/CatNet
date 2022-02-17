@@ -81,6 +81,14 @@ img {
 }
 
 
+.basket{
+  display: flex;
+  flex-direction: column;
+  height: 20%;
+  width: 100%;
+  border: yellow 2pt solid;
+
+
 .body-container {
   border: red solid 3px;
   display: flex;
@@ -115,5 +123,4 @@ img {
 
 .footer-container {
   border: pink solid 3px;
-  
 }
