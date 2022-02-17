@@ -4,6 +4,12 @@ import { render } from '@testing-library/react';
 import logo from './logo.svg';
 import './index.css';
 import Footer from './components/footer';
+<<<<<<< HEAD
+=======
+// import Header from './Components/Header';
+// import Basket from './components/Basket';
+
+>>>>>>> master
 
 function App() {
 
@@ -136,6 +142,29 @@ function App() {
 
   return (
     <div>
+<<<<<<< HEAD
+=======
+
+      <h1>
+        CatNet
+      </h1>
+
+      {
+        catImageStr ?
+          <img src = {catImageStr}></img> :
+          <p>No cat image string yet</p>
+
+      }
+
+
+      <div>
+        <button onClick={collectCat}>Cat Button</button>
+        <button onClick={pushCat}>
+          Push Cat
+        </button>
+      </div>
+
+>>>>>>> master
       <div className="body-container">
         <div className="navbar-container">
           <Header />
@@ -152,6 +181,25 @@ function App() {
           <Footer />
         </div>
       </div>
+<<<<<<< HEAD
+=======
+
+      <div className='flex0'>
+        Outer Flex Object (flex0)
+        <div className='flex1'>
+          Flex title bar (flex1)
+        </div>
+        <div className='flex2'>
+          Rows of cats (flex2) ---
+          <CatCloner />
+        </div>
+
+        
+      </div>
+      {/* <Basket/> */}
+      
+      <Footer/>
+>>>>>>> master
     </div>
   );
 }
