@@ -1,12 +1,9 @@
 import { useState, useEffect } from 'react';
-<<<<<<< HEAD
 
 import Header from './components/Header'
-=======
 import { faker } from '@faker-js/faker';
 import { render } from '@testing-library/react';
 import logo from './logo.svg';
->>>>>>> 062de03a45afb21a6b63c412c677656549271449
 import './index.css';
 import Footer from './components/footer';
 // import Header from './Components/Header';
