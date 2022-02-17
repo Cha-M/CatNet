@@ -1,5 +1,5 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from 'react';
+import styled from 'styled-components';
 
 //Feel free to change styling, just added some basics
 
@@ -11,7 +11,7 @@ color: #b47153;
 
 const Wrapper = styled.div`
 padding: 15px;
-`
+`;
 
 function Header() {
     return (
@@ -21,4 +21,4 @@ function Header() {
     )
 }
 
-export default Header
+export default Header;
