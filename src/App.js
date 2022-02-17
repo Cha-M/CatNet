@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
+import { faker } from '@faker-js/faker';
 import { render } from '@testing-library/react';
 import logo from './logo.svg';
 import './index.css';
-import Footer from './components/footer'
-import Header from './Components/Header'
-import Basket from './components/Basket'
+import Footer from './components/footer';
+// import Header from './Components/Header';
+// import Basket from './components/Basket';
 
 
 function App() {
@@ -73,10 +74,10 @@ function App() {
         } 
         
         const str1 = await catImageData.url;
-        const str2 = "abcd";
-        setCatImageStr(str1);
+        const str2 = `${faker.name.firstName()}`;
+        // setCatImageStr(str1);
         let catStorageLocal = catStorage;
-        catStorageLocal.push({catImgURL : str1, catName : `Felix ${str2}`});
+        catStorageLocal.push({catImgURL : str1, catName : `${str2}`});
 
         setCatStorage(catStorageLocal);
         console.log("catStorage", catStorage);
@@ -112,7 +113,7 @@ function App() {
     // let arrayCats = [{"catImgURL" : "abcd", "catName" : "efgh"}, {"catImgURL" : "abcd", "catName" : "efgh"}];
     let arrayCats = catStorage;
       if (arrayCats) {
-        const mapCats = arrayCats.map( (item, index) => <div className='flex4'>Name: {item.catName}, <img src = {item.catImgURL}></img>(flex4)</div>);
+        const mapCats = arrayCats.map( (item, index) => <div className='flex4'>Name: {item.catName} <img src = {item.catImgURL}></img>(flex4)</div>);
         console.log("arrayCats", arrayCats, "mapCats", mapCats);
         return ( <> <div className='flex3'>Container for cats from CatCloner function (flex3): {mapCats}</div> </> )
       }
@@ -203,7 +204,7 @@ function App() {
 
         
       </div>
-      <Basket/>
+      {/* <Basket/> */}
       
       <Footer/>
     </div>
