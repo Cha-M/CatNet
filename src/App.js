@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import logo from './logo.svg';
-import Header from './Components/Header'
+
+import Header from './components/Header'
 import './index.css';
 import { render } from '@testing-library/react';
 import Footer from './components/footer'
