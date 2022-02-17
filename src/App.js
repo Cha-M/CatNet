@@ -4,9 +4,12 @@ import { render } from '@testing-library/react';
 import logo from './logo.svg';
 import './index.css';
 import Footer from './components/footer';
+<<<<<<< HEAD
+=======
 // import Header from './Components/Header';
 // import Basket from './components/Basket';
 
+>>>>>>> master
 
 function App() {
 
@@ -120,38 +123,17 @@ function App() {
     };
 
   // Placeholder components
-  const NavBar = () => {
-    return (
-      <>
-        <p>CatNet</p>
-        <div className="checkout-button-container">
-          <button>Checkout</button>
-        </div>
-      </>
-    )
-  }
+  // const NavBar = () => {
+  //   return (
+  //     <>
+  //       <p>CatNet</p>
+  //       <div className="checkout-button-container">
+  //         <button>Checkout</button>
+  //       </div>
+  //     </>
+  //   )
+  // }
 
-  const GetCats = () => {
-    return (
-      <>
-      <div className="row1">
-        <div>cat1</div>
-        <div>cat2</div>
-        <div>cat3</div>
-      </div>
-      <div className="row2">
-        <div>cat1</div>
-        <div>cat2</div>
-        <div>cat3</div>
-      </div>
-      <div className="row3">
-        <div>cat1</div>
-        <div>cat2</div>
-        <div>cat3</div>
-      </div>
-      </>
-    )
-  }
 
 
   useEffect(() => {
@@ -160,6 +142,8 @@ function App() {
 
   return (
     <div>
+<<<<<<< HEAD
+=======
 
       <h1>
         CatNet
@@ -180,17 +164,25 @@ function App() {
         </button>
       </div>
 
+>>>>>>> master
       <div className="body-container">
         <div className="navbar-container">
-          <NavBar />
+          <Header />
         </div>
+        {/* Basket goes here for now */}
+        <div><Basket basketItems={basketItems}/></div>
         <div className="cats-container">
-          <GetCats />
+          <button onClick={pushCat}>
+            Push Cat
+          </button>
+          <CatCloner />
         </div>
         <div className="footer-container">
           <Footer />
         </div>
       </div>
+<<<<<<< HEAD
+=======
 
       <div className='flex0'>
         Outer Flex Object (flex0)
@@ -207,6 +199,7 @@ function App() {
       {/* <Basket/> */}
       
       <Footer/>
+>>>>>>> master
     </div>
   );
 }
