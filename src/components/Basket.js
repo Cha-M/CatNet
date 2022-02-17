@@ -1,5 +1,6 @@
 import React from "react"
 // hooks and funcs need to go in root component
+// add buttons to cat items
 // const [basketItems, setBasketItems] = useState([]);
 
 
