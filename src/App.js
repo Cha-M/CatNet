@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import './index.css';
 import { render } from '@testing-library/react';
 import Footer from './components/footer'
+import Basket from './components/Basket'
 
 
 // const collect = async () => {
@@ -16,6 +17,7 @@ import Footer from './components/footer'
 
 function App() {
 
+  const [basketItems, setBasketItems] = useState([]);
   const [catImageStr, setCatImageStr] = useState("");
   const [catImageData, setCatImageData] = useState("");
 
@@ -52,6 +54,7 @@ function App() {
       console.log ("Error: ", error);
     }
   }
+
 
   // const arrayList = (props) => {
   //   const items = props;
@@ -109,6 +112,7 @@ function App() {
           <CatCloner />
         </div>
       </div>
+      <Basket/>
       
       <Footer/>
     </div>
