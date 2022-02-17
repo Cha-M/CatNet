@@ -1,11 +1,9 @@
 import { useState, useEffect } from 'react';
-
-import Header from './components/Header'
-import './index.css';
+import { faker } from '@faker-js/faker';
 import { render } from '@testing-library/react';
-import Footer from './components/footer'
-import Basket from './components/Basket'
-
+import logo from './logo.svg';
+import './index.css';
+import Footer from './components/footer';
 
 function App() {
 
