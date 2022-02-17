@@ -17,6 +17,7 @@ import Footer from './components/footer'
 function App() {
 
   const [catImageStr, setCatImageStr] = useState("");
+  const [catStorage, setCatStorage] = useState([{"catImgURL" : "", "catName" : ""}])
   const [catImageData, setCatImageData] = useState("");
 
   // const data = await response.json();
@@ -48,8 +49,47 @@ function App() {
 
       const str1 = await catImageData.url;
       setCatImageStr(str1);
+
     } catch (error) {
       console.log ("Error: ", error);
+    }
+  }
+
+  const pushCat = async () => {
+    for (let x of ["a","b","c","d"]) { 
+      try {
+        const catAPILink = "https://api.thecatapi.com/v1/images/search/";
+        const catResponse = await fetch(catAPILink);
+        const data = await catResponse.json();
+        setCatImageData(data[0]);
+        
+        if (catImageData)
+        {
+          console.log("catImageData set as ", catImageData);
+        }
+        else
+        {
+          console.log("!catImageData");
+        }
+        // console.log("catIData", catImageData);
+        
+        if (catResponse.status !== 200) {
+          console.log("error !200");
+          console.log(catResponse.status);
+          throw new Error("Error");
+        } 
+        
+        const str1 = await catImageData.url;
+        setCatImageStr(str1);
+        let catStorageLocal = catStorage;
+        catStorageLocal.push({catImgURL : str1, catName : `Felix ${x}`});
+
+        setCatStorage(catStorageLocal);
+        console.log("catStorage", catStorage);
+
+      } catch (error) {
+        console.log ("Error: ", error);
+      }
     }
   }
 
@@ -67,16 +107,57 @@ function App() {
   //   )
   // }
 
-  const CatCloner = () => {
+  const CatCloner = (props) => {
     // let arrayCats = Array(40);
     // for (let x of arrayCats) {
       //   x = "Fluffy";
       // }
-    let arrayCats = ["Fluffy", "Fluffy", "Felix", "Fluffy", "Fluffy", "Felix", "Fluffy", "Felix", "Felix", "Felix", "Fluffy"];
-    const mapCats = arrayCats.map( (item, index) => <div className='flex4'>Name: {item}, {index} (flex4)</div>);
-    console.log("arrayCats", arrayCats, "mapCats", mapCats);
-    return ( <> <div className='flex3'>Container for cats from CatCloner function (flex3): {mapCats}</div></> )
+    
+    // const arrayCats = props.array;
+
+    // let arrayCats = [{"catImgURL" : "abcd", "catName" : "efgh"}, {"catImgURL" : "abcd", "catName" : "efgh"}];
+    let arrayCats = catStorage;
+      if (arrayCats) {
+        const mapCats = arrayCats.map( (item, index) => <div className='flex4'>Name: {item.catName}, <img src = {item.catImgURL}></img>(flex4)</div>);
+        console.log("arrayCats", arrayCats, "mapCats", mapCats);
+        return ( <> <div className='flex3'>Container for cats from CatCloner function (flex3): {mapCats}</div> </> )
+      }
     };
+
+  // Placeholder components
+  const NavBar = () => {
+    return (
+      <>
+        <p>CatNet</p>
+        <div className="checkout-button-container">
+          <button>Checkout</button>
+        </div>
+      </>
+    )
+  }
+
+  const GetCats = () => {
+    return (
+      <>
+      <div className="row1">
+        <div>cat1</div>
+        <div>cat2</div>
+        <div>cat3</div>
+      </div>
+      <div className="row2">
+        <div>cat1</div>
+        <div>cat2</div>
+        <div>cat3</div>
+      </div>
+      <div className="row3">
+        <div>cat1</div>
+        <div>cat2</div>
+        <div>cat3</div>
+      </div>
+      </>
+    )
+  }
+
 
   useEffect(() => {
     collectCat()
@@ -87,6 +168,9 @@ function App() {
       <h1>
         CatNet
       </h1>
+      <button onClick={pushCat}>
+        Push Cat
+      </button>
       {
         catImageStr ?
           <img src = {catImageStr}></img> :
@@ -99,6 +183,18 @@ function App() {
         <button onClick={collectCat}>Cat Button</button>
       </div>
 
+      <div className="body-container">
+        <div className="navbar-container">
+          <NavBar />
+        </div>
+        <div className="cats-container">
+          <GetCats />
+        </div>
+        <div className="footer-container">
+          <Footer />
+        </div>
+      </div>
+
       <div className='flex0'>
         Outer Flex Object (flex0)
         <div className='flex1'>
@@ -106,8 +202,10 @@ function App() {
         </div>
         <div className='flex2'>
           Rows of cats (flex2) ---
-          <CatCloner />
+          <CatCloner array = {pushCat} />
         </div>
+
+        
       </div>
       
       <Footer/>
