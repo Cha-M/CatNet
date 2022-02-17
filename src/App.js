@@ -143,8 +143,7 @@ function App() {
 
   return (
     <div>
-<<<<<<< HEAD
-=======
+
 
       <h1>
         CatNet
@@ -165,14 +164,12 @@ function App() {
         </button>
       </div>
 
->>>>>>> master
+
       <div className="body-container">
         <div className="navbar-container">
-<<<<<<< HEAD
+
           <Header/>
-=======
-          <Header />
->>>>>>> dc2bb10cf84f73d0a1a05c132d1fc8b492a576b6
+
         </div>
         {/* Basket goes here for now */}
         <div><Basket basketItems={basketItems}/></div>
@@ -186,8 +183,6 @@ function App() {
           <Footer />
         </div>
       </div>
-<<<<<<< HEAD
-=======
 
       <div className='flex0'>
         Outer Flex Object (flex0)
@@ -201,14 +196,8 @@ function App() {
 
         
       </div>
-      {/* <Basket/> */}
-      
-<<<<<<< HEAD
-      {/* <Footer/> */}
-=======
-      <Footer/>
->>>>>>> master
->>>>>>> dc2bb10cf84f73d0a1a05c132d1fc8b492a576b6
+
+    
     </div>
   );
 }
