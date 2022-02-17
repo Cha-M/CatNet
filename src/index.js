@@ -5,9 +5,7 @@ import App from './App';
 import Flex from './Flex';
 
 
-
 ReactDOM.render(
-
     <App />,
   document.getElementById('root')
 );
