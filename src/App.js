@@ -36,8 +36,8 @@ function App() {
     console.log("waiting for cats...")
   }
 
-  console.log(cat)
-
+  // This is what will be renderd to the screen
+  // Currently just placeholder info
   return (
     <div className="body-container">
       <div className="navbar-container">
@@ -54,6 +54,8 @@ function App() {
   );
 }
 
+
+// Placeholder components
 const NavBar = () => {
   return (
     <>
