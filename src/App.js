@@ -9,7 +9,11 @@ import Basket from './components/Basket'
 
 function App() {
 
+  // This is an array that will be populated by cats clicked on!
+  // It will be passed into the Basket component, each item in the
+  // array will then be rendered to the basket container!
   const [basketItems, setBasketItems] = useState([]);
+
   const [catImageStr, setCatImageStr] = useState("");
   const [catStorage, setCatStorage] = useState([{"catImgURL" : "", "catName" : ""}])
   const [catImageData, setCatImageData] = useState("");
@@ -114,43 +118,22 @@ function App() {
       if (arrayCats) {
         const mapCats = arrayCats.map( (item, index) => <div className='flex4'>Name: {item.catName}, <img src = {item.catImgURL}></img>(flex4)</div>);
         console.log("arrayCats", arrayCats, "mapCats", mapCats);
-        return ( <> <div className='flex3'>Container for cats from CatCloner function (flex3): {mapCats}</div> </> )
+        return ( <> <div className='flex3'>{mapCats}</div> </> )
       }
     };
 
   // Placeholder components
-  const NavBar = () => {
-    return (
-      <>
-        <p>CatNet</p>
-        <div className="checkout-button-container">
-          <button>Checkout</button>
-        </div>
-      </>
-    )
-  }
+  // const NavBar = () => {
+  //   return (
+  //     <>
+  //       <p>CatNet</p>
+  //       <div className="checkout-button-container">
+  //         <button>Checkout</button>
+  //       </div>
+  //     </>
+  //   )
+  // }
 
-  const GetCats = () => {
-    return (
-      <>
-      <div className="row1">
-        <div>cat1</div>
-        <div>cat2</div>
-        <div>cat3</div>
-      </div>
-      <div className="row2">
-        <div>cat1</div>
-        <div>cat2</div>
-        <div>cat3</div>
-      </div>
-      <div className="row3">
-        <div>cat1</div>
-        <div>cat2</div>
-        <div>cat3</div>
-      </div>
-      </>
-    )
-  }
 
 
   useEffect(() => {
@@ -159,39 +142,39 @@ function App() {
 
   return (
     <div>
+      
+      
 
-      <h1>
-        CatNet
-      </h1>
-      <button onClick={pushCat}>
-        Push Cat
-      </button>
-
-      {
+      {/* {
         catImageStr ?
           <img src = {catImageStr}></img> :
           <p>No cat image string yet</p>
 
-      }
+      } */}
 
 
-      <div>
+      {/* <div>
         <button onClick={collectCat}>Cat Button</button>
-      </div>
+      </div> */}
 
       <div className="body-container">
         <div className="navbar-container">
-          <NavBar />
+          <Header />
         </div>
+        {/* Basket goes here for now */}
+        <div><Basket basketItems={basketItems}/></div>
         <div className="cats-container">
-          <GetCats />
+          <button onClick={pushCat}>
+            Push Cat
+          </button>
+          <CatCloner />
         </div>
         <div className="footer-container">
           <Footer />
         </div>
       </div>
 
-      <div className='flex0'>
+      {/* <div className='flex0'>
         Outer Flex Object (flex0)
         <div className='flex1'>
           Flex title bar (flex1)
@@ -202,10 +185,10 @@ function App() {
         </div>
 
         
-      </div>
-      <Basket/>
+      </div> */}
       
-      <Footer/>
+      
+      
     </div>
   );
 }
