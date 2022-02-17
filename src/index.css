@@ -11,3 +11,49 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.flex0 {
+  background-color: black;
+  color: red;
+  border: red 2pt solid;
+  flex-direction: column;
+  display: flex;
+}
+
+.flex1 {
+  background-color: black;
+  color: orange;
+  border: orange 2pt solid;
+  display: flex;
+}
+
+.flex2 {
+  background-color: black;
+  color: yellow;
+  border: yellow 2pt solid;
+  display: flex;
+}
+
+.flex3 {
+  background-color: black;
+  color: green;
+  border: green 2pt solid;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.flex4 {
+  background-color: black;
+  color: blue;
+  border: blue 2pt solid;
+  flex: 1;
+
+  min-width: 10vw;
+  min-height: 10vw;
+  flex-grow: 0;
+  
+  
+}
+
