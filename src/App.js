@@ -1,23 +1,17 @@
 import { useState, useEffect } from 'react';
-import './index.css';
 import { render } from '@testing-library/react';
+import logo from './logo.svg';
+import './index.css';
 import Footer from './components/footer'
-
-
-// const collect = async () => {
-//   try {
-//     // const response = await fetch("https://api.adviceslip.com/advice");
-//     const randID = Math.floor(Math.random() * 60000);
-//     console.log("n", randID);
-//     const apiStr = "http://gutendex.com/books/" + randID + "?limit=10";
-//     // const response = await fetch("http://gutendex.com/books/84");
-//     const response = await fetch(apiStr);
+import Header from './Components/Header'
+import Basket from './components/Basket'
 
 
 function App() {
 
+  const [basketItems, setBasketItems] = useState([]);
   const [catImageStr, setCatImageStr] = useState("");
-  const [catStorage, setCatStorage] = useState([{"catImgURL" : "", "catName" : ""}])
+  const [catStorage, setCatStorage] = useState([{"catImgURL" : "", "catName" : ""}]);
   const [catImageData, setCatImageData] = useState("");
 
   // const data = await response.json();
@@ -54,7 +48,7 @@ function App() {
       console.log ("Error: ", error);
     }
   }
-
+  
   const pushCat = async () => {
       try {
         const catAPILink = "https://api.thecatapi.com/v1/images/search/";
@@ -165,9 +159,11 @@ function App() {
 
   return (
     <div>
+
       <h1>
         CatNet
       </h1>
+
       {
         catImageStr ?
           <img src = {catImageStr}></img> :
@@ -202,11 +198,12 @@ function App() {
         </div>
         <div className='flex2'>
           Rows of cats (flex2) ---
-          <CatCloner array = {pushCat} />
+          <CatCloner />
         </div>
 
         
       </div>
+      <Basket/>
       
       <Footer/>
     </div>
