@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
-import logo from './logo.svg';
 import './index.css';
 import { render } from '@testing-library/react';
+import Footer from './components/footer'
+
 
 // const collect = async () => {
 //   try {
@@ -93,6 +94,7 @@ function App() {
 
       }
 
+
       <div>
         <button onClick={collectCat}>Cat Button</button>
       </div>
@@ -108,6 +110,7 @@ function App() {
         </div>
       </div>
       
+      <Footer/>
     </div>
   );
 }
