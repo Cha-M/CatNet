@@ -1,4 +1,4 @@
-import { NavLink, Routes, Route, BrowserRouter } from "react-router-dom";
+import { NavLink, Routes, Route } from "react-router-dom";
 import Home from './navPages';
 import AboutUs from './navPages/aboutus';
 import ContactUs from './navPages/contactus';
@@ -41,11 +41,11 @@ function NavBar() {
 
              </nav>
                  <Routes>
-                     <Route path="./navPages/index" element={ <Home />} />
-                     <Route path="./navPages/aboutus" element={<AboutUs />} />
-                     <Route path="./navPages/contactus" element={<ContactUs />} />
-                     <Route path="./navPages/signin" element={<SignIn />} />
-                     <Route path="./navPages/signup" element={<SignUp />} />
+                     <Route path="/home" element={ <Home />} />
+                     <Route path="/aboutus" element={<AboutUs />} />
+                     <Route path="/contactus" element={<ContactUs />} />
+                     <Route path="/signin" element={<SignIn />} />
+                     <Route path="/signup" element={<SignUp />} />
                  </Routes>
          </div>
     )
