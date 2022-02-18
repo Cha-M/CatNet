@@ -18,7 +18,7 @@ import SignIn from './navPages/signin';
 
 function NavBar() {
     return (
-        <div className="nav">
+        <div className="nav-container">
             <nav>
                 {/* <NavLink to="/home"> */}
                 <NavLink to="/home">
