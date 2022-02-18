@@ -37,9 +37,11 @@ function App() {
       catsArray.push({
         img: cat.url, 
         name:faker.name.firstName(), 
-        price:faker.commerce.price()
+        price:faker.commerce.price(),
 /*========================cat ModalD fakers=======================}*/
-
+        location:faker.address.cityName(),
+        breed:faker.animal.cat(),
+        about:faker.lorem.paragraph()
       }) 
     })
     // We set our state hook equal to our new array of cat objects

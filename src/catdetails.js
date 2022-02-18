@@ -3,9 +3,9 @@ import { faker } from "@faker-js/faker";
 import './catdetails.css'
 
 /*============Faker info for catdetails ModalD================}*/
-const location = faker.address.cityName();
-const breed = faker.animal.cat();
-const about = faker.lorem.paragraph();
+// const location = faker.address.cityName();
+// const breed = faker.animal.cat();
+// const about = faker.lorem.paragraph();
 
 export const ModalD = ({onCloseClick, cat}) => (
     <div className="modal-wrapper" onClick={onCloseClick}>
@@ -15,9 +15,9 @@ export const ModalD = ({onCloseClick, cat}) => (
             <img style={{alignSelf: 'center'}} src={cat.img} alt='cat' width={200} height={200} />
             <Item label={'Name'} value={cat.name} />
             <Item label={'Price £:'} value={cat.price} />
-            <Item label={'Location:'} value={location} />
-            <Item label={'Breed:'} value={breed} />
-            <Item label={'About:'} value={about} />
+            <Item label={'Location:'} value={cat.location} />
+            <Item label={'Breed:'} value={cat.breed} />
+            <Item label={'About:'} value={cat.about} />
         </div>
     </div>
 )
