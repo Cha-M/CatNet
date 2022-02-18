@@ -7,11 +7,19 @@
   --second-fg-colour: brown;
 }
 
+html {
+  height: 100%;
+}
+
 body {
+  
   margin: 0;
   font-family: "Lora", serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: rgb(228, 236, 240);
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 code {
@@ -55,9 +63,28 @@ nav {
   margin-top: 1rem;
 
 }
+
+.nav {
+  height: 10vh;
+  text-align: center;
+  margin-bottom: 200px;
+}
+
+.nav a {
+  padding: 1rem;
+}
+
+.route {
+  display: block;
+  height: 15vh;
+}
+
 .cat-container {
   display: flex;
+  position: relative;
   flex-wrap: wrap;
+  justify-content: center;
+  
 }
 
 .cat img {
@@ -105,8 +132,12 @@ nav {
 
 .footer {
   display: flex;
+
+  position: relative;
+
   bottom: 0;
   width: 100%;
+  margin-top: 30px;
   background-color: pink;
   justify-content: center;
   font-size: 20px;
