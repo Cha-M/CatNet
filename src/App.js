@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
 import { faker } from '@faker-js/faker';
-import { render } from '@testing-library/react';
-import logo from './logo.svg';
+// import { render } from '@testing-library/react';
+// import logo from './logo.svg';
 import './index.css';
-import Footer from './components/footer';
-// import Header from './Components/Header';
-// import Basket from './components/Basket';
+import Footer from './Components/footer';
+import Header from './Components/Header';
+import Basket from './Components/Basket';
 
 import { Modal } from './catdetails';
 
