@@ -24,8 +24,10 @@ code {
 }
 
 .basket-header {
+  color: #d1b29d;
   display: flex;
   justify-content: space-between;
+  border-bottom: lightskyblue solid 2pt;
 }
 
 .cart {
@@ -46,9 +48,18 @@ code {
 
 
 #close-basket {
+  font-size: 25px;
   margin-left: 1rem;
   margin-top: 1rem;
   height: 50%;
+  background-color: transparent;
+  border: white solid 1pt;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.remove{
+  background-color: transparent;
+  border: red solid 1pt;
 }
 .cat-container {
   display: flex;
