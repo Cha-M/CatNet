@@ -3,7 +3,9 @@ import { faker } from '@faker-js/faker';
 import Footer from './components/footer';
 import Header from './components/Header';
 import Basket from './components/Basket'
+import NavBar from './components/NavBar/index';
 import Modal from 'react-modal';
+
 // import './App.css';
 
 function App() {
@@ -98,6 +100,10 @@ function App() {
         <Header />
         <button onClick={basketModalHandler}>Basket</button>
       </div>
+
+      
+        <NavBar />
+      
 
       <div className='basket-container'>
       
