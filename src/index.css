@@ -12,7 +12,6 @@ html {
 }
 
 body {
-  
   margin: 0;
   font-family: "Lora", serif;
   -webkit-font-smoothing: antialiased;
@@ -31,6 +30,13 @@ code {
   display: flex;
 }
 
+
+.basket-header {
+  color: #d1b29d;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: lightskyblue solid 2pt;
+}
 
 nav {
   display: flex;
@@ -77,10 +83,21 @@ nav {
   
 
 }
+
 #close-basket {
+  font-size: 25px;
   margin-left: 1rem;
   margin-top: 1rem;
+  height: 50%;
+  background-color: transparent;
+  border: white solid 1pt;
+  border-radius: 5px;
+  cursor: pointer;
+}
 
+.remove{
+  background-color: transparent;
+  border: red solid 1pt;
 }
 
 .nav {

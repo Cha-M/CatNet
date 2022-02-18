@@ -116,6 +116,7 @@ function App() {
             <div className='basket-header'>
               <button id='close-basket' onClick={basketModalHandler}>x</button>
               <h2 className='basket-title'>Your Basket</h2>
+              <p>Basket total: £{basketTotal}.00</p>
             </div>
             
             <div className = "basket-items">
@@ -124,15 +125,13 @@ function App() {
                 return (
                   <div key={index} className='item'>
                     <p>{item.name}</p>
-                    <p>{item.price}</p>
-                    <button onClick={() => removeFromBasket(index)}>remove</button>
+                    <p>£{item.price}</p>
+                    <button onClick={() => removeFromBasket(index)} className='remove'>-</button>
                   </div>
                 )
               })}
             </div>
-            <div className='total'>
-              <p>Basket total: £{basketTotal}.00</p>
-            </div>
+
 
           </div>
         </Modal>
