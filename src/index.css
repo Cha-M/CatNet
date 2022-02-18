@@ -23,20 +23,48 @@ code {
   display: flex;
 }
 
+.basket-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.cart {
+  height: 50px;
+  width: 50px;
+  align-self: center;
+  
+}
+.cart svg {
+  margin-left: 30%;
+  scale: 2;
+  cursor: pointer;
+}
+
+.svg {
+  height: 50px;
+}
+
+
 #close-basket {
   margin-left: 1rem;
   margin-top: 1rem;
-
+  height: 50%;
 }
 .cat-container {
   display: flex;
   flex-wrap: wrap;
 }
 
+.cat {
+  background-color: #DDBEA9;
+  border-radius: 5px;
+  margin: 1px;
+}
+
 .cat img {
   
-  color: blue;
-  border: blue 2pt solid;
+  
+  border-radius: 3px;
   flex: 1;
 
   min-width: 10vw;
@@ -55,4 +83,17 @@ code {
 
 .cat-info button {
   float: right;
+}
+
+.name-and-price {
+  margin-bottom: 10px;
+  margin-top: 5px;
+  margin-right: 5px;
+}
+
+.add-cat-button{
+  cursor: pointer;
+  margin-bottom: 10px;
+  margin-top: 5px;
+  margin-left: 5px;
 }
