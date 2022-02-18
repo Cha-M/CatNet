@@ -15,6 +15,8 @@ text-align: center;
 function Home() {
     return (
         <div>
+
+            
             <Title>Welcome to CatNet</Title>
             <subTitle>A place to catch the perfect cat!</subTitle>
         </div>

@@ -10,6 +10,8 @@ color: #b47153;
 function AboutUs() {
     return (
         <div className="route">
+
+            
             <Title>About Us</Title>
             <h2>We have thousands of different feline companions ready to join your family!</h2>
             <h3>We believe cats deserve a loving home where they are treated with kindness and understanding.</h3>

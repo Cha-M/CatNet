@@ -11,6 +11,8 @@ color: #b47153;
 function ContactUs() {
     return (
         <div className='route'>
+
+            
             <Title>Contact Us</Title>
             <h2>Address: CatNet Centre, North West, NW35 0PW.
                 <p>Email: catnet@catz4lyf.com</p>
