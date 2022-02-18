@@ -1,38 +1,60 @@
-import React from 'react';
-import styled from 'styled-components';
-import { Nav, NavLogo, NavLink, Bars, NavMenu, NavBtn, NavBtnLink } from "./NavBarElements";
+import { NavLink, Routes, Route } from "react-router-dom";
+import Home from './navPages';
+import AboutUs from './navPages/aboutus';
+import ContactUs from './navPages/contactus';
+import SignUp from './navPages/signup';
+import SignIn from './navPages/signin';
+import styled from "styled-components";
 
-//UNFINISHED
+const nav = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 30px;
+    cursor: pointer;
+    &:hover {
+        color: #b47153;
+}
+`
 
-const NavBar = () => {
+function NavBar() {
     return (
-        <>
-            <Nav>
-                <NavLogo to-"/">
-                    logo
-                </NavLogo>
-                <Bars />
+        <div className="nav-container">
+            <nav>
+                {/* <NavLink to="/home"> */}
+                <NavLink to="/home">
+                    Home
+                </NavLink>
+                {/* <NavLink to="/aboutus"> */}
+                <NavLink to="/aboutus">
+                    About Us
+                </NavLink>
 
-                <NavMenu>
-                    <NavLink to="/">
-                        Home
-                    </NavLink>
-                    <NavLink to="/aboutus">
-                        About Us
-                    </NavLink>
-                    <NavLink to="/contactus">
-                     Contact Us
-                    </NavLink>
-                    <NavLink to="/signin">
-                        Sign In
-                    </NavLink>
-                    <NavBtn>
-                        <NavBtnLink to="/signup">Sign Up</NavBtnLink>
-                    </NavBtn>
-                </NavMenu>
-            </Nav>
-        </>
+                {/* <NavLink to="/contactus"> */}
+                <NavLink to="/contactus">
+                    Contact Us
+                </NavLink>
+
+                {/* <NavLink to="/signin"> */}
+                <NavLink to="/signin">
+                    Sign In
+                </NavLink>
+
+                {/* <NavLink to="/signup"> */}
+                <NavLink to="/signup">
+                    Sign Up
+                </NavLink>
+
+            </nav>
+            <Routes>
+                <Route path="/home" element={<Home />} />
+                <Route path="/aboutus" element={<AboutUs />} />
+                <Route path="/contactus" element={<ContactUs />} />
+                <Route path="/signin" element={<SignIn />} />
+                <Route path="/signup" element={<SignUp />} />
+            </Routes>
+        </div>
     )
 }
 
-export default NavBar;
+export default NavBar
