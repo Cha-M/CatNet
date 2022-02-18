@@ -1,213 +1,154 @@
 import { useState, useEffect } from 'react';
 import { faker } from '@faker-js/faker';
-import { render } from '@testing-library/react';
-import logo from './logo.svg';
-import './index.css';
 import Footer from './components/footer';
-// import Header from './Components/Header';
-// import Basket from './components/Basket';
-
+import Header from './components/Header';
+import Basket from './components/Basket'
+import Modal from 'react-modal';
+// import './App.css';
 
 function App() {
+  let basketTotal = 0;
+  const [cats, updateCats] = useState([]);
+  const [basket, updateBasket] = useState([]);
+  const [basketModal, updateBasketModal] = useState(false);
 
-  const [basketItems, setBasketItems] = useState([]);
-  const [catImageStr, setCatImageStr] = useState("");
-  const [catStorage, setCatStorage] = useState([{"catImgURL" : "", "catName" : ""}]);
-  const [catImageData, setCatImageData] = useState("");
 
-  // const data = await response.json();
-  // // console.log(data);
-  // setBook(data);
+  // Fetch a batch of cat img urls
+  // Push them into storage
+  const getCats = async() => {
+    // Wait for response from cat API --
+    // Fetching 16 cats
+    const response = await fetch("https://api.thecatapi.com/v1/images/search?limit=16");
+    // Wait to JSONify it
+    const data = await response.json();
+    // Create a spread array for our current collection of cats
+    const catsArray = [...cats];
+    // Map our JSONified fetched cats into our new cat array, each cat is an object with an img url,
+    // a fake name, and a fake price
+    data.map((cat, index) => {
+      catsArray.push({img: cat.url, name:faker.name.firstName(), price:faker.commerce.price()})
+    })
+    // We set our state hook equal to our new array of cat objects
+    updateCats(catsArray)
+  }
 
-  const collectCat = async () => {
-    try {
-      const catAPILink = "https://api.thecatapi.com/v1/images/search/";
-      const catResponse = await fetch(catAPILink);
-      const data = await catResponse.json();
-      setCatImageData(data[0]);
+  // All basket handling functions stay in the root node for now
+  // External components seem complicated
 
-      if (catImageData)
-      {
-        console.log("catImageData set as ", catImageData);
-      }
-      else
-      {
-        console.log("!catImageData");
-      }
-      // console.log("catIData", catImageData);
+  // This is a simple add to list function, like our to do list
+  const addToBasket = (x) => {
+    let myBasket = [...basket];
+    myBasket.push(x);
+    updateBasket(myBasket);
+  }
 
-      if (catResponse.status !== 200) {
-        console.log("error !200");
-        console.log(catResponse.status);
-        throw new Error("Error");
-      } 
+  // We remove in the same way
+  const removeFromBasket = (index) => {
+    let myBasket = [...basket];
+    myBasket.splice(index, 1);
+    updateBasket(myBasket);
+  }
 
-      const str1 = await catImageData.url;
-      setCatImageStr(str1);
+  // This will update the running total of cats in the basket array
+  basket.map((item) => {
+    basketTotal+=parseInt(item.price)
+  })
+  
+  // Now this part is all for the basket pop-up provided by
+  // 'react-modal' -- I don't fully understand it, but it works :^)
 
-    } catch (error) {
-      console.log ("Error: ", error);
+  // This will set our Modal state to true/false
+  const basketModalHandler = () => {
+    if (!basketModal) {
+      updateBasketModal(true)
+    } else {
+      updateBasketModal(false)
     }
   }
-  
-  const pushCat = async () => {
-      try {
-        const catAPILink = "https://api.thecatapi.com/v1/images/search/";
-        const catResponse = await fetch(catAPILink);
-        const data = await catResponse.json();
-        setCatImageData(data[0]);
-        
-        if (catImageData)
-        {
-          console.log("catImageData set as ", catImageData);
-        }
-        else
-        {
-          console.log("!catImageData");
-        }
-        // console.log("catIData", catImageData);
-        
-        if (catResponse.status !== 200) {
-          console.log("error !200");
-          console.log(catResponse.status);
-          throw new Error("Error");
-        } 
-        
-        const str1 = await catImageData.url;
-        const str2 = `${faker.name.firstName()}`;
-        // setCatImageStr(str1);
-        let catStorageLocal = catStorage;
-        catStorageLocal.push({catImgURL : str1, catName : `${str2}`});
 
-        setCatStorage(catStorageLocal);
-        console.log("catStorage", catStorage);
+  // This is th container for our modal pop-up basket
+  // We basically just create a new div
+  const modalContainer = document.createElement('div');
+  // We append it to the DOM, only when our modal state is TRUE
+  document.body.appendChild(modalContainer)
 
-      } catch (error) {
-        console.log ("Error: ", error);
-      }
-    
+  // Modal components have a 'style' attribute that uses objects
+  // Good for general layout, but more specific styling of elements within
+  // should be done using CSS and class names etc.
+  const custom = {
+    content : {
+      marginLeft: '25%',
+      width: '50%'
+    }
   }
 
-  // const arrayList = (props) => {
-  //   const items = props;
-  //   // const listItemsInner;
-  //   const listItems = items.map((item, index) =>
-  //     <li key={index.toString()}>{item}</li>
-  //     // <ul>{() => item.map((it1, in1)) => <li>it1</li>}</ul></li>
-  
-  //   )
-  
-  //   return (
-  //     <ul>{listItems}</ul>
-  //   )
-  // }
-
-  const CatCloner = (props) => {
-    // let arrayCats = Array(40);
-    // for (let x of arrayCats) {
-      //   x = "Fluffy";
-      // }
-    
-    // const arrayCats = props.array;
-
-    // let arrayCats = [{"catImgURL" : "abcd", "catName" : "efgh"}, {"catImgURL" : "abcd", "catName" : "efgh"}];
-    let arrayCats = catStorage;
-      if (arrayCats) {
-        const mapCats = arrayCats.map( (item, index) => <div className='flex4'>Name: {item.catName} <img src = {item.catImgURL}></img>(flex4)</div>);
-        console.log("arrayCats", arrayCats, "mapCats", mapCats);
-        return ( <> <div className='flex3'>Container for cats from CatCloner function (flex3): {mapCats}</div> </> )
-      }
-    };
-
-  // Placeholder components
-  const NavBar = () => {
-    return (
-      <>
-        <p>CatNet</p>
-        <div className="checkout-button-container">
-          <button>Checkout</button>
-        </div>
-      </>
-    )
-  }
-
-  const GetCats = () => {
-    return (
-      <>
-      <div className="row1">
-        <div>cat1</div>
-        <div>cat2</div>
-        <div>cat3</div>
-      </div>
-      <div className="row2">
-        <div>cat1</div>
-        <div>cat2</div>
-        <div>cat3</div>
-      </div>
-      <div className="row3">
-        <div>cat1</div>
-        <div>cat2</div>
-        <div>cat3</div>
-      </div>
-      </>
-    )
-  }
+  // This is to fetch and generate our cats on page load, only once!
+  useEffect(()=>{
+    getCats();
+  }, [])
 
 
-  useEffect(() => {
-    collectCat()
-  }, []);
-
+  // This is everything that is to be rendered
+  // Header and Footer components are simple enough that we
+  // can simply reference an external jsx file
   return (
-    <div>
-
-      <h1>
-        CatNet
-      </h1>
-
-      {
-        catImageStr ?
-          <img src = {catImageStr}></img> :
-          <p>No cat image string yet</p>
-
-      }
-
-
-      <div>
-        <button onClick={collectCat}>Cat Button</button>
-        <button onClick={pushCat}>
-          Push Cat
-        </button>
+    <>
+      {/* RENDER HEADER NAV BAR */}
+      <div className="header-container">
+        <Header />
+        <button onClick={basketModalHandler}>Basket</button>
       </div>
 
-      <div className="body-container">
-        <div className="navbar-container">
-          <NavBar />
-        </div>
-        <div className="cats-container">
-          <GetCats />
-        </div>
-        <div className="footer-container">
-          <Footer />
-        </div>
-      </div>
-
-      <div className='flex0'>
-        Outer Flex Object (flex0)
-        <div className='flex1'>
-          Flex title bar (flex1)
-        </div>
-        <div className='flex2'>
-          Rows of cats (flex2) ---
-          <CatCloner />
-        </div>
-
-        
-      </div>
-      {/* <Basket/> */}
+      <div className='basket-container'>
       
-      <Footer/>
-    </div>
+        {/* RENDER MODAL BASKET WHEN CLICKED */}
+        <Modal style={custom} isOpen={basketModal}>
+          <div className='basket-contents'>
+            <button id='close-basket' onClick={basketModalHandler}>x</button>
+            <h2>Your Basket</h2>
+            <div className = "basket-items">
+              
+              {basket.map( (item, index) => {
+                return (
+                  <div key={index} className='item'>
+                    <p>{item.name}</p>
+                    <p>{item.price}</p>
+                    <button onClick={() => removeFromBasket(index)}>remove</button>
+                  </div>
+                )
+              })}
+            </div>
+            <div className='total'>
+              <p>Basket total: £{basketTotal}.00</p>
+            </div>
+
+          </div>
+        </Modal>
+        
+      
+      </div>
+  
+
+      {/* RENDER CAT DISPLAY */}
+      
+      <div className='cat-container'>
+        {cats.map( (kitty,index) => {
+          return (
+            <div className="cat" key={index}>
+              <img src={kitty.img}></img>
+              <div className="cat-info">
+                <p> {kitty.name} | £{kitty.price} </p>
+                <p onClick={() => addToBasket(kitty)}>[+]</p>
+              </div>
+            </div>
+          )
+        })}
+      </div>
+
+      <div className="footer-container">
+        <Footer />
+      </div>
+    </>
   );
 }
 
