@@ -30,6 +30,7 @@ code {
 .cart svg {
   margin-left: 30%;
   scale: 2;
+  cursor: pointer;
 }
 
 .svg {
