@@ -1,38 +1,51 @@
-import React from 'react';
-import styled from 'styled-components';
-import { Nav, NavLogo, NavLink, Bars, NavMenu, NavBtn, NavBtnLink } from "./NavBarElements";
+import { NavLink, Routes, Route } from "react-router-dom";
+import Home from './NavBar/navPages';
+import AboutUs from './NavBar/navPages/aboutus';
+import ContactUs from './NavBar/navPages/contactus';
+import SignUp from './NavBar/navPages/signup';
+import SignIn from './NavBar/navPages/signin';
 
-//UNFINISHED
+// const nav = styled(div)`
+//     color: #b47153;
+//     display: flex;
+//     align-items: center;
+//     padding: 10px;
+//     cursor: pointer;
+//     &:hover {
+//     color: #fff;
+// }
+// `
 
-const NavBar = () => {
+
+function NavBar() {
     return (
-        <>
-            <Nav>
-                <NavLogo to-"/">
-                    logo
-                </NavLogo>
-                <Bars />
+        <div className="nav">
+            <nav>
+                <NavLink to="/home">
+                    Home
+                </NavLink>
+                <NavLink to="/aboutus">
+                    About Us
+                </NavLink>
 
-                <NavMenu>
-                    <NavLink to="/">
-                        Home
-                    </NavLink>
-                    <NavLink to="/aboutus">
-                        About Us
-                    </NavLink>
-                    <NavLink to="/contactus">
-                     Contact Us
-                    </NavLink>
-                    <NavLink to="/signin">
-                        Sign In
-                    </NavLink>
-                    <NavBtn>
-                        <NavBtnLink to="/signup">Sign Up</NavBtnLink>
-                    </NavBtn>
-                </NavMenu>
-            </Nav>
-        </>
+                <NavLink to="/contactus">
+                    Contact Us
+                </NavLink>
+
+                <NavLink to="/signin">
+                    Sign In
+                </NavLink>
+
+            </nav>
+                <Routes>
+                    <Route path="/" element={ <Home />} />
+                    <Route path="aboutus" element={<AboutUs />} />
+                    <Route path="contactus" element={<ContactUs />} />
+                    <Route path="signin" element={<SignIn />} />
+                    <Route path=".signup" element={<SignUp />} />
+                </Routes>
+        </div>
     )
 }
 
-export default NavBar;
+export default NavBar
