@@ -38,6 +38,7 @@ nav {
   display: flex;
   flex-direction: row;
   justify-content: center;
+  align-content: center;
   justify-content: space-around;
   min-width: 40vw;
   margin-left: 1vw;
@@ -52,12 +53,30 @@ nav {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
+  background-color: pink;
+  margin-bottom: 1vh;
 
+}
+
+.nav-container a {
+  text-decoration: none;
+  color: grey;
+  line-height: 50%;
+  font-size:  1.5rem;
+  margin-top: 1.5rem;
+  margin-left: 1rem;
+  margin-right: 1.5rem;
+}
+
+.nav-container a:hover {
+  color: rgb(82, 82, 82);
 }
 
 .nav-bar-element {
   flex: 1;
   min-width: 10vw;
+  text-decoration: none;
+  
 
 }
 #close-basket {
@@ -70,6 +89,7 @@ nav {
   height: 10vh;
   text-align: center;
   margin-bottom: 200px;
+  
 }
 
 .nav a {
@@ -127,9 +147,7 @@ nav {
 .add-cat-button:hover {
   /* background-color:aqua; */
   cursor: pointer;
-  margin-bottom: 10px;
-  margin-top: 5px;
-  margin-left: 5px;
+  margin-top: 0.2rem;
 }
 
 .footer {
