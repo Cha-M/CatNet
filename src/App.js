@@ -3,16 +3,25 @@ import { faker } from '@faker-js/faker';
 import Footer from './Components/footer';
 import Header from './Components/Header';
 import Basket from './Components/Basket'
-import NavBar from './Components/NavBar/index';
 import Modal from 'react-modal';
+import { ModalD } from './catdetails';
+import NavBar from './Components/NavBar/index';
+
+
 
 // import './App.css';
+
+
+
 
 function App() {
   let basketTotal = 0;
   const [cats, updateCats] = useState([]);
   const [basket, updateBasket] = useState([]);
   const [basketModal, updateBasketModal] = useState(false);
+
+  {/*============cat selection for ModalD=======================}*/}
+  const [selectedCat, setSelectedCat] = useState(null);
 
 
   // Fetch a batch of cat img urls
@@ -28,7 +37,15 @@ function App() {
     // Map our JSONified fetched cats into our new cat array, each cat is an object with an img url,
     // a fake name, and a fake price
     data.map((cat, index) => {
-      catsArray.push({img: cat.url, name:faker.name.firstName(), price:faker.commerce.price()})
+      catsArray.push({
+        img: cat.url, 
+        name:faker.name.firstName(), 
+        price:faker.commerce.price(),
+/*========================cat ModalD fakers=======================}*/
+        location:faker.address.cityName(),
+        breed:faker.animal.cat(),
+        about:faker.lorem.paragraph()
+      }) 
     })
     // We set our state hook equal to our new array of cat objects
     updateCats(catsArray)
@@ -136,7 +153,17 @@ function App() {
           </div>
         </Modal>
         
-      
+
+      </div>
+{/*============Selected cat ModalD detail and offclick close=========\/============\/===============================}*/}
+      <div>
+      {
+        selectedCat ? (
+           <ModalD 
+            cat={selectedCat}
+            onCloseClick={ () => setSelectedCat(null) } /> 
+          ) : null
+      }
       </div>
   
 
@@ -148,6 +175,13 @@ function App() {
             <div className="cat" key={index}>
               <img src={kitty.img}></img>
               <div className="cat-info">
+
+                <p> {kitty.name} | £{kitty.price} </p>
+                <p onClick={() => addToBasket(kitty)}>[+]</p>
+{/*============Cat detail button ==========\/====================\/=============================}*/}
+
+                <button onClick={() => setSelectedCat(kitty)}>Detail</button>
+
                 <p className="name-and-price"> {kitty.name} | £{kitty.price}  </p>
                 <p className="add-cat-button" onClick={() => addToBasket(kitty)}>🐾</p>
               </div>

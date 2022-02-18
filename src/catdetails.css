@@ -1,0 +1,35 @@
+.modal-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,.6);
+    display: flex;
+    justify-content: center;
+}
+
+.modal-content {
+    background-color: rgba(228, 113, 74, 0.733);
+    position: fixed;
+    top: 100px;
+    left: 100px;
+    right: 100px;
+    bottom: 100px;
+    display: flex;
+    flex-direction: column;
+    overflow: "auto";
+    /* display: flex; */
+    border-radius: 50px
+
+}
+
+.modal-content img {
+    display: block;
+    /* min-width: 400px;
+    min-height: 400px;
+    max-width: 400;
+    max-height: 400; */
+    width: 400px;
+    height: 400px;
+}
