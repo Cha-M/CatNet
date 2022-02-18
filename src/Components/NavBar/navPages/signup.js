@@ -11,6 +11,8 @@ color: #b47153;
 function SignUp() {
     return (
         <div className='route'>
+
+            
             <Title>Sign Up</Title>
         </div>
     )
