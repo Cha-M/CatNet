@@ -1,10 +1,16 @@
 body {
   margin: 0;
+  margin-bottom: 110px;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: rgb(139, 232, 203);
+  background-image: url('./components/164518744532052896.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  color: rgb(6, 90, 130);
 }
 
 code {
@@ -14,6 +20,7 @@ code {
 
 .header-container {
   display: flex;
+  background-color: rgb(225, 96, 54);
 }
 
 #close-basket {
@@ -48,4 +55,14 @@ code {
 
 .cat-info button {
   float: right;
+}
+
+.footer{
+  padding-left: 20px;
+  height: 70px;
+  background-color: rgb(214, 122, 177);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
 }
