@@ -4,7 +4,7 @@ import Footer from './components/footer';
 import Header from './components/Header';
 import Basket from './components/Basket'
 import Modal from 'react-modal';
-import './App.css';
+// import './App.css';
 
 function App() {
   let basketTotal = 0;
