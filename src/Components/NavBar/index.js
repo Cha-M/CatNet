@@ -1,9 +1,9 @@
-import { NavLink, Routes, Route } from "react-router-dom";
-import Home from './NavBar/navPages';
-import AboutUs from './NavBar/navPages/aboutus';
-import ContactUs from './NavBar/navPages/contactus';
-import SignUp from './NavBar/navPages/signup';
-import SignIn from './NavBar/navPages/signin';
+import { NavLink, Routes, Route, BrowserRouter } from "react-router-dom";
+import Home from './navPages';
+import AboutUs from './navPages/aboutus';
+import ContactUs from './navPages/contactus';
+import SignUp from './navPages/signup';
+import SignIn from './navPages/signin';
 
 // const nav = styled(div)`
 //     color: #b47153;
@@ -16,35 +16,38 @@ import SignIn from './NavBar/navPages/signin';
 // }
 // `
 
-
 function NavBar() {
     return (
         <div className="nav">
             <nav>
+                {/* <NavLink to="/home"> */}
                 <NavLink to="/home">
                     Home
                 </NavLink>
+                {/* <NavLink to="/aboutus"> */}
                 <NavLink to="/aboutus">
                     About Us
                 </NavLink>
 
-                <NavLink to="/contactus">
-                    Contact Us
-                </NavLink>
+                 {/* <NavLink to="/contactus"> */}
+                 <NavLink to="/contactus">
+                     Contact Us
+                 </NavLink>
 
-                <NavLink to="/signin">
-                    Sign In
-                </NavLink>
+                 {/* <NavLink to="/signin"> */}
+                 <NavLink to="/signin">
+                     Sign In
+                 </NavLink>
 
-            </nav>
-                <Routes>
-                    <Route path="/" element={ <Home />} />
-                    <Route path="aboutus" element={<AboutUs />} />
-                    <Route path="contactus" element={<ContactUs />} />
-                    <Route path="signin" element={<SignIn />} />
-                    <Route path=".signup" element={<SignUp />} />
-                </Routes>
-        </div>
+             </nav>
+                 <Routes>
+                     <Route path="./navPages/index" element={ <Home />} />
+                     <Route path="./navPages/aboutus" element={<AboutUs />} />
+                     <Route path="./navPages/contactus" element={<ContactUs />} />
+                     <Route path="./navPages/signin" element={<SignIn />} />
+                     <Route path="./navPages/signup" element={<SignUp />} />
+                 </Routes>
+         </div>
     )
 }
 
