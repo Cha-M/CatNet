@@ -8,10 +8,7 @@ import { ModalD } from './catdetails';
 
 // import './App.css';
 
-{/*============Faker info for catdetails ModalD================}*/}
-const randLoc = faker.address.cityName();
-const randBreed = faker.animal.cat();
-const randAbout = faker.lorem.paragraph();
+
 
 
 function App() {
@@ -37,7 +34,13 @@ function App() {
     // Map our JSONified fetched cats into our new cat array, each cat is an object with an img url,
     // a fake name, and a fake price
     data.map((cat, index) => {
-      catsArray.push({img: cat.url, name:faker.name.firstName(), price:faker.commerce.price()})
+      catsArray.push({
+        img: cat.url, 
+        name:faker.name.firstName(), 
+        price:faker.commerce.price()
+/*========================cat ModalD fakers=======================}*/
+
+      }) 
     })
     // We set our state hook equal to our new array of cat objects
     updateCats(catsArray)
@@ -141,9 +144,11 @@ function App() {
 {/*============Selected cat ModalD detail and offclick close=========\/============\/===============================}*/}
       <div>
       {
-        selectedCat ? <ModalD location={randLoc} breed={randBreed} about={randAbout} 
-
-      onCloseClick={ () => setSelectedCat(null) } /> : null
+        selectedCat ? (
+           <ModalD 
+            cat={selectedCat}
+            onCloseClick={ () => setSelectedCat(null) } /> 
+          ) : null
       }
       </div>
   
