@@ -3,8 +3,8 @@
 :root {
   --main-bg-color: brown;
   --second-bg-colour: red;
-  --main-fg-colour: blue;
-  --second-fg-colour: aquamarine;
+  --main-fg-colour: #b47153;
+  --second-fg-colour: brown;
 }
 
 body {
@@ -30,6 +30,33 @@ code {
   background-color: rgb(225, 96, 54);
 }
 
+
+nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  justify-content: space-around;
+  min-width: 40vw;
+  margin-left: 1vw;
+  /* border: 2px solid salmon; */
+}
+
+/* a:hover {
+  color: aqua;
+} */
+
+.nav-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+
+}
+
+.nav-bar-element {
+  flex: 1;
+  min-width: 10vw;
+
+}
 #close-basket {
   margin-left: 1rem;
   margin-top: 1rem;
@@ -42,8 +69,7 @@ code {
 
 .cat img {
   
-  color: blue;
-  border: blue 2pt solid;
+  border: var(--main-fg-colour) 2pt solid;
   flex: 1;
 
   min-width: 10vw;
@@ -58,18 +84,50 @@ code {
 .cat-info {
   display: flex;
   justify-content: center;
+  
 }
 
 .cat-info button {
   float: right;
 }
 
-.footer{
-  padding-left: 20px;
-  height: 70px;
-  background-color: rgb(214, 122, 177);
-  position: fixed;
+.cat {
+  background-color: var(--main-fg-colour);
+  border-radius: 1vw;
+  margin: 1vw;
+  
+}
+
+.cat p {
+  font-weight: 600;
+}
+
+.add-cat-button:hover {
+  /* background-color:aqua; */
+  cursor: pointer;
+  margin-bottom: 10px;
+  margin-top: 5px;
+  margin-left: 5px;
+}
+
+.footer {
+  display: flex;
   bottom: 0;
-  left: 0;
   width: 100%;
+  background-color: pink;
+  justify-content: center;
+  font-size: 20px;
+}
+
+.footer a {
+  text-decoration: none;
+  color: grey;
+  line-height: 50%;
+  margin-top: 1.5rem;
+  margin-left: 1rem;
+  margin-right: 1.5rem;
+}
+
+.footer a:hover {
+  color: rgb(82, 82, 82);
 }
