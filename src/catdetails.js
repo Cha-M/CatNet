@@ -2,7 +2,7 @@ import React from "react";
 
 import './catdetails.css'
 
-export const Modal = ({url, price, location, breed, about, onCloseClick}) => (
+export const ModalD = ({url, price, location, breed, about, onCloseClick}) => (
     <div className="modal-wrapper" onClick={onCloseClick}>
         <div className="modal-content">
             {/* <button style={{alignSelf: 'flex-end', padding: '10px'}} onClick={onCloseClick}>Close X</button> */}

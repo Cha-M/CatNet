@@ -4,13 +4,24 @@ import Footer from './Components/footer';
 import Header from './Components/Header';
 import Basket from './Components/Basket'
 import Modal from 'react-modal';
+import { ModalD } from './catdetails';
+
 // import './App.css';
+
+{/*============Faker info for catdetails ModalD================}*/}
+const randLoc = faker.address.cityName();
+const randBreed = faker.animal.cat();
+const randAbout = faker.lorem.paragraph();
+
 
 function App() {
   let basketTotal = 0;
   const [cats, updateCats] = useState([]);
   const [basket, updateBasket] = useState([]);
   const [basketModal, updateBasketModal] = useState(false);
+
+  {/*============cat selection for ModalD=======================}*/}
+  const [selectedCat, setSelectedCat] = useState(null);
 
 
   // Fetch a batch of cat img urls
@@ -125,7 +136,15 @@ function App() {
           </div>
         </Modal>
         
-      
+
+      </div>
+{/*============Selected cat ModalD detail and offclick close=========\/============\/===============================}*/}
+      <div>
+      {
+        selectedCat ? <ModalD location={randLoc} breed={randBreed} about={randAbout} 
+
+      onCloseClick={ () => setSelectedCat(null) } /> : null
+      }
       </div>
   
 
@@ -139,6 +158,9 @@ function App() {
               <div className="cat-info">
                 <p> {kitty.name} | £{kitty.price} </p>
                 <p onClick={() => addToBasket(kitty)}>[+]</p>
+{/*============Cat detail button ==========\/====================\/=============================}*/}
+
+                <button onClick={() => setSelectedCat(kitty)}>Detail</button>
               </div>
             </div>
           )
