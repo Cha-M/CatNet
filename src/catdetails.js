@@ -24,7 +24,7 @@ export const ModalD = ({onCloseClick, cat}) => (
 
 const Item = ({label, value}) => (
     <div style={{display: 'flex'}}>
-        <h3 style={{marginRight: '10px', color: "grey"}}>{label}</h3>
+        <h3 style={{marginRight: '15px', color: "139, 232, 203"}}>{label}</h3>
         <p>{value}</p>
     </div>
 )
