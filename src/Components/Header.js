@@ -15,8 +15,8 @@ color: #b47153;
 
 const Wrapper = styled.div`
 padding: 15px;
-<<<<<<< HEAD
-width: 70%;`
+width: 70%;
+`
 
 function Header() {
     return (
