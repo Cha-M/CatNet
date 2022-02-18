@@ -17,10 +17,6 @@ function Home() {
         <div>
             <Title>Welcome to CatNet</Title>
             <subTitle>A place to catch the perfect cat!</subTitle>
-            <Link to="aboutus">About Us</Link>
-            <Link to="contacttus">Contact Us</Link>
-            <Link to="signin">Sign In</Link>
-            <Link to="signup">Sign Up</Link>
         </div>
     );
 }
