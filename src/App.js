@@ -177,12 +177,12 @@ function App() {
               <div className="cat-info">
 
                 <p> {kitty.name} | £{kitty.price} </p>
-                <p onClick={() => addToBasket(kitty)}>[+]</p>
+                {/* <p onClick={() => addToBasket(kitty)}>[+]</p> */}
 {/*============Cat detail button ==========\/====================\/=============================}*/}
 
-                <button onClick={() => setSelectedCat(kitty)}>Detail</button>
+                {/* <button onClick={() => setSelectedCat(kitty)}>Detail</button> */}
 
-                <p className="name-and-price"> {kitty.name} | £{kitty.price}  </p>
+                {/* <p className="name-and-price"> {kitty.name} | £{kitty.price}  </p> */}
                 <p className="add-cat-button" onClick={() => addToBasket(kitty)}>🐾</p>
               </div>
             </div>
