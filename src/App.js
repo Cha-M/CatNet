@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import { faker } from '@faker-js/faker';
-import Footer from './Components/footer';
-import Header from './Components/Header';
-import Basket from './Components/Basket'
-import NavBar from './Components/NavBar/index';
+import Footer from './components/footer';
+import Header from './components/Header';
+import Basket from './components/Basket'
+import NavBar from './components/NavBar/index';
 import Modal from 'react-modal';
 
 // import './App.css';
