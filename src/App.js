@@ -2,9 +2,9 @@ import { useState, useEffect } from 'react';
 import { faker } from '@faker-js/faker';
 import Footer from './Components/footer';
 import Header from './Components/Header';
-import Basket from './Components/Basket'
+import Basket from './Components/Basket';
 import Modal from 'react-modal';
-import { ModalD } from './catdetails';
+import { DetailsComponent } from './catdetails';
 import NavBar from './Components/NavBar/index';
 
 
@@ -19,7 +19,8 @@ function App() {
   const [cats, updateCats] = useState([]);
   const [basket, updateBasket] = useState([]);
   const [basketModal, updateBasketModal] = useState(false);
-
+  const [detailsModal, updateDetailsModal] = useState(false);
+  
   {/*============cat selection for ModalD=======================}*/}
   const [selectedCat, setSelectedCat] = useState(null);
 
@@ -78,10 +79,19 @@ function App() {
 
   // This will set our Modal state to true/false
   const basketModalHandler = () => {
+    // let c = selectedCat;
     if (!basketModal) {
       updateBasketModal(true)
     } else {
       updateBasketModal(false)
+    }
+  }
+
+  const detailsModalHandler = () => {
+    if (!detailsModal) {
+      updateDetailsModal(true)
+    } else {
+      updateDetailsModal(false)
     }
   }
 
@@ -90,6 +100,9 @@ function App() {
   const modalContainer = document.createElement('div');
   // We append it to the DOM, only when our modal state is TRUE
   document.body.appendChild(modalContainer)
+
+  const modalContainer2 = document.createElement('div');
+  document.body.appendChild(modalContainer2)
 
   // Modal components have a 'style' attribute that uses objects
   // Good for general layout, but more specific styling of elements within
@@ -121,12 +134,10 @@ function App() {
         </svg></a>
       </div>
 
-      
         <NavBar />
       
-
-      <div className='basket-container'>
-      
+      {/* <div className='basket-container'> */}
+      <div id = 'basket-container'>
         {/* RENDER MODAL BASKET WHEN CLICKED */}
         <Modal style={custom} isOpen={basketModal}>
           <div className='basket-contents'>
@@ -155,8 +166,9 @@ function App() {
         
 
       </div>
+
 {/*============Selected cat ModalD detail and offclick close=========\/============\/===============================}*/}
-      <div>
+      {/* <div>
       {
         selectedCat ? (
            <ModalD 
@@ -164,7 +176,23 @@ function App() {
             onCloseClick={ () => setSelectedCat(null) } /> 
           ) : null
       }
+      </div> */}
+
+      {/* <div className='basket-container'> */}
+      <div id = 'details-container'>
+        <Modal style={custom} isOpen={detailsModal}>
+          <div className='basket-contents'>
+              <div className='basket-header'>
+                <button id='close-basket' onClick={detailsModalHandler}>x</button>
+                <h2 className='basket-title'>Details</h2>
+                <p></p>
+              </div>
+              <DetailsComponent cat = {selectedCat}/>
+          </div>
+        </Modal>
       </div>
+
+    
   
 
       {/* RENDER CAT DISPLAY */}
@@ -176,7 +204,7 @@ function App() {
               <img src={kitty.img}></img>
               <div className="cat-info">
 
-                <p> {kitty.name} | £{kitty.price} </p>
+                <p onClick={detailsModalHandler}> {kitty.name} | £{kitty.price} </p>
                 {/* <p onClick={() => addToBasket(kitty)}>[+]</p> */}
 {/*============Cat detail button ==========\/====================\/=============================}*/}
 

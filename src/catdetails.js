@@ -7,7 +7,7 @@ import './catdetails.css'
 // const breed = faker.animal.cat();
 // const about = faker.lorem.paragraph();
 
-export const ModalD = ({onCloseClick, cat}) => (
+export const DetailsComponent = ({onCloseClick, cat}) => (
     <div className="modal-wrapper" onClick={onCloseClick}>
         <div className="modal-content">
 
